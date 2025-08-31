@@ -29,5 +29,6 @@
   {
     # This will make the package available as a flake output under 'packages'
     packages.${system}.default = nyoomvim.neovim;
+    nixosModules.default = nyoomvim.neovim;
   };
 }

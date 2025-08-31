@@ -1,31 +1,47 @@
 {
-  description = "Neovim Configuration Flake using NVF";
-inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    home-manager.url = "github:nix-community/home-manager";
-    nvf.url = "github:notashelf/nvf";
+  description = "A nixvim configuration";
+
+  inputs = {
+    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    nixvim.url = "github:nix-community/nixvim";
+    flake-parts.url = "github:hercules-ci/flake-parts";
   };
 
-  outputs = {nixpkgs, home-manager, nvf, ...}: let
-    system = "x86_64-linux";
-    pkgs = nixpkgs.legacyPackages.${system};
-    configModule = {
-      # Add any custom options (and do feel free to upstream them!)
-      # options = { ... };
+  outputs =
+    { nixvim, flake-parts, ... }@inputs:
+    flake-parts.lib.mkFlake { inherit inputs; } {
+      systems = [
+        "x86_64-linux"
+        "aarch64-linux"
+        "x86_64-darwin"
+        "aarch64-darwin"
+      ];
 
-      config.vim = {
-        theme.enable = true;
-        # and more options as you see fit...
-      };
+      perSystem =
+        { system, ... }:
+        let
+          nixvimLib = nixvim.lib.${system};
+          nixvim' = nixvim.legacyPackages.${system};
+          nixvimModule = {
+            inherit system; # or alternatively, set `pkgs`
+            module = import ./config; # import the module directly
+            # You can use `extraSpecialArgs` to pass additional arguments to your module files
+            extraSpecialArgs = {
+              # inherit (inputs) foo;
+            };
+          };
+          nvim = nixvim'.makeNixvimWithModule nixvimModule;
+        in
+        {
+          checks = {
+            # Run `nix flake check .` to verify that your config is not broken
+            default = nixvimLib.check.mkTestDerivationFromNixvimModule nixvimModule;
+          };
+
+          packages = {
+            # Lets you run `nix run .` to start nixvim
+            default = nvim;
+          };
+        };
     };
-
-    customNeovim = nvf.lib.neovimConfiguration {
-      inherit pkgs;
-      modules = [configModule];
-    };
-  in {
-    # This will make the package available as a flake output under 'packages'
-    packages.${system} = rec {nyoomvim = customNeovim.neovim; default = nyoomvim;};
-
-  };
 }

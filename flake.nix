@@ -1,36 +1,31 @@
 {
   description = "Neovim Configuration Flake using NVF";
-
-  inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
-    nvf= {url="github:notashelf/nvf";inputs.nixpkgs.follows="nixpkgs";};
+inputs = {
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    home-manager.url = "github:nix-community/home-manager";
+    nvf.url = "github:notashelf/nvf";
   };
-    outputs = {nixpkgs, ...} @ inputs: {
-    packages.x86_64-linux = {
-      # Set the default package to the wrapped instance of Neovim.
-      # This will allow running your Neovim configuration with
-      # `nix run` and in addition, sharing your configuration with
-      # other users in case your repository is public.
-      default =
-        (inputs.nvf.lib.neovimConfiguration {
-          pkgs = nixpkgs.legacyPackages.x86_64-linux;
-          modules = [
-            {
-              config.vim = {
-                # Enable custom theming options
-                theme.enable = true;
 
-                # Enable Treesitter
-                treesitter.enable = true;
+  outputs = {nixpkgs, home-manager, nvf, ...}: let
+    system = "x86_64-linux";
+    pkgs = nixpkgs.legacyPackages.${system};
+    configModule = {
+      # Add any custom options (and do feel free to upstream them!)
+      # options = { ... };
 
-                # Other options will go here. Refer to the config
-                # reference in Appendix B of the nvf manual.
-                # ...
-              };
-            }
-          ];
-        })
-        .neovim;
+      config.vim = {
+        theme.enable = true;
+        # and more options as you see fit...
+      };
     };
+
+    customNeovim = nvf.lib.neovimConfiguration {
+      inherit pkgs;
+      modules = [configModule];
+    };
+  in {
+    # This will make the package available as a flake output under 'packages'
+    packages.${system} = rec {nyoomvim = customNeovim.neovim; default = nyoomvim;};
+
   };
 }

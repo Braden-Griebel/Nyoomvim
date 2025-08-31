@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
-    nvf.url = {url="github:notashelf/nvf";inputs.nixpkgs.follows="nixpkgs";};
+    nvf= {url="github:notashelf/nvf";inputs.nixpkgs.follows="nixpkgs";};
   };
     outputs = {nixpkgs, ...} @ inputs: {
     packages.x86_64-linux = {

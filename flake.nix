@@ -28,6 +28,6 @@
   in 
   {
     # This will make the package available as a flake output under 'packages'
-    packages.${system}.nyoomvim = nyoomvim.neovim;
+    packages.${system}.default = nyoomvim.neovim;
   };
 }

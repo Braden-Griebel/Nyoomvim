@@ -6,6 +6,6 @@
     ./lualine.nix
     ./mini.nix
     ./telescope.nix
-    ./whick-key.nix
+    ./which-key.nix
   ];
 }

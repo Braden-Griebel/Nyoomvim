@@ -3,9 +3,10 @@
   imports = [
     ./bufferline.nix
     ./colorscheme.nix
+    ./dashboard.nix
+    ./fzf.nix
     ./lualine.nix
     ./mini.nix
-    ./telescope.nix
     ./which-key.nix
   ];
 }

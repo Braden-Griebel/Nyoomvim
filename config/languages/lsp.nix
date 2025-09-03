@@ -24,7 +24,7 @@
         lua_ls.enable = true; # Lua
         marksman.enable = true; # Markdown
         neocmake.enable = true; # CMake snipets
-	nil_ls.enable = true; # Nix lsp
+        nil_ls.enable = true; # Nix lsp
         ocamllsp.enable = true; # Ocaml language server
         pyright.enable = true; # Python Lanugage Server
         ruff.enable = true; # Python linter/formater
@@ -62,6 +62,10 @@
         lspBufAction = "hover";
       }
       {
+        key = "<leader>cr";
+        lspBufAction = "rename";
+      }
+      {
         action = lib.nixvim.mkRaw "function() vim.diagnostic.jump({ count=-1, float=true }) end";
         key = "<leader>k";
       }
@@ -85,10 +89,10 @@
         action = lib.nixvim.mkRaw "require('telescope.builtin').lsp_definitions";
         key = "gd";
       }
-      {
-        action = "<CMD>Lspsaga hover_doc<Enter>";
-        key = "K";
-      }
+      # {
+      #   action = "<CMD>Lspsaga hover_doc<Enter>";
+      #   key = "K";
+      # }
     ];
   };
 }

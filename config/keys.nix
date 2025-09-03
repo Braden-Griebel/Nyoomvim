@@ -502,5 +502,47 @@
       action = "<CMD>BaconLoad<CR>:w<CR>:BaconNext<CR>";
       options.desc = "Next Bacon Issue";
     }
+
+    # Vim-slime (Send code regions)
+    {
+      mode = "n";
+      key="gz";
+      action = "<Plug>SlimeMotionSend";
+      options = {
+        desc = "Motion Send";
+        remap = true;
+        silent = false;
+      };
+    }
+    {
+      mode = "n";
+      key="gzz";
+      action = "<Plug>SlimeLineSend";
+      options = {
+        desc = "Line Send";
+        remap = true;
+        silent = false;
+      };
+    }
+    {
+      mode = "x";
+      key="gz";
+      action = "<Plug>SlimeRegionSend";
+      options = {
+        desc = "Region Send";
+        remap = true;
+        silent = false;
+      };
+    }
+    {
+      mode = "n";
+      key="gzc";
+      action = "<Plug>SlimeConfig";
+      options = {
+        desc = "Config";
+        remap = true;
+        silent = false;
+      };
+    }
   ];
 }

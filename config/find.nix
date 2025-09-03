@@ -3,7 +3,7 @@
     fzf-lua = {
       enable = true;
       keymaps = {
-        "<leader>s/" = {
+        "<leader>/" = {
           action = "live_grep";
           options.desc = "Live Grep";
         };

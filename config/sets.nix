@@ -36,7 +36,6 @@
 
     hop.enable = true;
     illuminate.enable = true;
-    image.enable = true;
     lazygit.enable = true;
     nvim-lightbulb.enable = true;
     lualine = {

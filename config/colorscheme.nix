@@ -1,0 +1,1 @@
+{ colorschemes.tokyonight = { enable = true; }; }

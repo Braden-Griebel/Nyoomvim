@@ -1,0 +1,1 @@
+{ plugins.flash.enable = true; }

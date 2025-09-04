@@ -52,7 +52,7 @@
         {
           __unkeyed-1 = "<leader>u";
           group = "ui";
-          icons = {
+          icon = {
             icon = "󰙵 ";
             color = "cyan";
           };
@@ -60,7 +60,7 @@
         {
           __unkeyed-1 = "<leader>x";
           group = "diagnostics/quickfix";
-          icons = {
+          icon = {
             icon = "󱖫 ";
             color = "green";
           };

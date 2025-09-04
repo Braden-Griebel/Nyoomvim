@@ -1,0 +1,1 @@
+{ plugins.lspconfig = { enable = true; }; }

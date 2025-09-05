@@ -1,15 +1,11 @@
-let
-  # Read all files in the current directory
-  files = builtins.readDir ./.;
-
-  # Filter out default.nix and non-.nix files
-  nixFiles = builtins.filter
-    (name: name != "default.nix" && builtins.match ".*\\.nix" name != null)
-    (builtins.attrNames files);
-
-  # Create a list of import statements
-  imports = map (name: ./. + "/${name}") nixFiles;
-in {
-  # Import all configuration modules automatically
-  imports = imports;
+# This file is only used for standalone run/build of kickstart.nixvim
+{
+  imports = [ ../nixvim.nix ];
+  # Optionally, add any extra settings here that you want to apply
+  # only in the standalone version (not when imported as a module)
+  # Example:
+  # extraConfig = ''
+  #   set number
+  #   set relativenumber
+  # '';
 }

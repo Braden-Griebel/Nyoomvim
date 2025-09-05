@@ -3,9 +3,7 @@
   #    See the README about individual language/framework/plugin snippets:
   #    https://github.com/rafamadriz/friendly-snippets
   # https://nix-community.github.io/nixvim/plugins/friendly-snippets.html
-  # plugins.friendly-snippets = {
-  #   enable = true;
-  # };
+  plugins.friendly-snippets = { enable = true; };
 
   # Dependencies
   #
@@ -65,12 +63,7 @@
       };
 
       sources = {
-        default = [
-          "lsp"
-          "path"
-          "snippets"
-          "lazydev"
-        ];
+        default = [ "lsp" "path" "snippets" "lazydev" ];
         providers = {
           lazydev = {
             module = "lazydev.integrations.blink";
@@ -79,9 +72,7 @@
         };
       };
 
-      snippets = {
-        preset = "luasnip";
-      };
+      snippets = { preset = "luasnip"; };
 
       # Blink.cmp includes an optional, recommended rust fuzzy matcher,
       # which automatically downloads a prebuilt binary when enabled.
@@ -90,14 +81,10 @@
       # the rust implementation via `'prefer_rust_with_warning'`
       #
       # See :h blink-cmp-config-fuzzy for more information
-      fuzzy = {
-        implementation = "lua";
-      };
+      fuzzy = { implementation = "lua"; };
 
       # Shows a signature help window while you type arguments for a function
-      signature = {
-        enabled = true;
-      };
+      signature = { enabled = true; };
     };
   };
 }

@@ -112,6 +112,17 @@
           __unkeyed-1 = "gx";
           desc = "Open with system app";
         }
+        # TreeSitter 
+        {
+          __unkeyed-1 = "<bs>";
+          desc = "Decrement Selection";
+          mode = [ "x" ];
+        }
+        {
+          __unkeyed-1 = "<C-Space>";
+          desc = "Increment Selection";
+          mode = [ "x" "n" ];
+        }
       ];
     };
   };
@@ -311,55 +322,212 @@
       };
       options.desc = "Window Hydra Mode (which-key)";
     }
+    # LazyVim Keymaps
+    # Better up/down
+    {
+      key = "j";
+      action = "v:count == 0 ? 'gj' : 'j'";
+      options = {
+        desc = "Down";
+        expr = true;
+        silent = true;
+      };
+      mode = [ "n" "x" ];
+    }
+    {
+      key = "<Down>";
+      action = "v:count == 0 ? 'gj' : 'j'";
+      options = {
+        desc = "Down";
+        expr = true;
+        silent = true;
+      };
+      mode = [ "n" "x" ];
+    }
+    {
+      key = "k";
+      action = "v:count == 0 ? 'gk' : 'k'";
+      options = {
+        desc = "Up";
+        expr = true;
+        silent = true;
+      };
+      mode = [ "n" "x" ];
+    }
+    {
+      key = "<Up>";
+      action = "v:count == 0 ? 'gk' : 'k'";
+      options = {
+        desc = "Up";
+        expr = true;
+        silent = true;
+      };
+      mode = [ "n" "x" ];
+    }
+    # Move to window using the <ctrl> hjkl keys
+    {
+      key = "<C-h>";
+      action = "<C-w>h";
+      options = {
+        desc = "Go to Left Window";
+        remap = true;
+      };
+      mode = [ "n" ];
+    }
+    {
+      key = "<C-j>";
+      action = "<C-w>j";
+      options = {
+        desc = "Go to Lower Window";
+        remap = true;
+      };
+      mode = [ "n" ];
+    }
+    {
+      key = "<C-k>";
+      action = "<C-w>k";
+      options = {
+        desc = "Go to Upper Window";
+        remap = true;
+      };
+      mode = [ "n" ];
+    }
+    {
+      key = "<C-l>";
+      action = "<C-w>l";
+      options = {
+        desc = "Go to Right Window";
+        remap = true;
+      };
+      mode = [ "n" ];
+    }
+    # Resize window using <ctrl> arrow keys
+    {
+      key = "<C-Up>";
+      action = "<cmd>resize +2<cr>";
+      mode = [ "n" ];
+      options.desc = "Increase Window Height";
+    }
+    {
+      key = "<C-Down>";
+      action = "<cmd>resize -2<cr>";
+      mode = [ "n" ];
+      options.desc = "Decrease Window Height";
+    }
+    {
+      key = "<C-Left>";
+      action = "<cmd>vertical resize -2<cr>";
+      mode = [ "n" ];
+      options.desc = "Decrease Window Width";
+    }
+    {
+      key = "<C-Right>";
+      action = "<cmd>vertical resize +2<cr>";
+      mode = [ "n" ];
+      options.desc = "Increase Window Width";
+    }
+    # Move Lines
+    {
+      mode = [ "n" ];
+      key = "<A-j>";
+      action = "<cmd>execute 'move .+' . v:count1<cr>==";
+      options = { desc = "Move Down"; };
+    }
+    {
+      mode = [ "n" ];
+      key = "<A-k>";
+      action = "<cmd>execute 'move .-' . (v:count1 + 1)<cr>==";
+      options = { desc = "Move Up"; };
+    }
+    {
+      mode = [ "i" ];
+      key = "<A-j>";
+      action = "<esc><cmd>m .+1<cr>==gi";
+      options = { desc = "Move Down"; };
+    }
+    {
+      mode = [ "i" ];
+      key = "<A-k>";
+      action = "<esc><cmd>m .-2<cr>==gi";
+      options = { desc = "Move Up"; };
+    }
+    {
+      mode = [ "v" ];
+      key = "<A-j>";
+      action = '':<C-u>execute "'<,'>move '>+" . v:count1<cr>gv=gv'';
+      options = { desc = "Move Down"; };
+    }
+    {
+      mode = [ "v" ];
+      key = "<A-k>";
+      action = '':<C-u>execute "'<,'>move '<-" . (v:count1 + 1)<cr>gv=gv'';
+      options = { desc = "Move Up"; };
+    }
+    # -- buffers
+    {
+      mode = [ "n" ];
+      key = "<S-h>";
+      action = "<cmd>bprevious<cr>";
+      options.desc = "Prev Buffer";
+    }
+    {
+      mode = [ "n" ];
+      key = "<S-l>";
+      action = "<cmd>bnext<cr>";
+      options.desc = "Next Buffer";
+    }
+    {
+      mode = [ "n" ];
+      key = "<[b>";
+      action = "<cmd>bprevious<cr>";
+      options.desc = "Prev Buffer";
+    }
+    {
+      mode = [ "n" ];
+      key = "<]b>";
+      action = "<cmd>bnext<cr>";
+      options.desc = "Next Buffer";
+    }
+    {
+      mode = [ "n" ];
+      key = "<leader>bb";
+      action = "<cmd>e #<cr>";
+      options.desc = "Switch to Other Buffer";
+    }
+    {
+      mode = [ "n" ];
+      key = "<leader>`";
+      action = "<cmd>e #<cr>";
+      options.desc = "Switch to Other Buffer";
+    }
+    {
+      mode = [ "n" ];
+      key = "<leader>bd";
+      action = lib.nixvim.mkRaw ''
+        function()
+          Snacks.bufdelete()
+        end '';
+      options.desc = "Delete Buffer";
+    }
+    {
+      mode = [ "n" ];
+      key = "<leader>bo";
+      action = lib.nixvim.mkRaw ''
+        function()
+          Snacks.bufdelete.other()
+        end '';
+      options.desc = "Delete Other Buffers";
+    }
+    {
+      mode = [ "n" ];
+      key = "<leaderbD";
+      action = "<cmd>:bd<cr>";
+      options.desc = "Delete Buffer and Window";
+    }
   ];
 }
 
 # Keymaps from LazyVim (Remove as added)
-# -- This file is automatically loaded by lazyvim.config.init
-# -- DO NOT USE `LazyVim.safe_keymap_set` IN YOUR OWN CONFIG!!
-# -- use `vim.keymap.set` instead
-# local map = LazyVim.safe_keymap_set
-#
-# -- better up/down
-# map({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { desc = "Down", expr = true, silent = true })
-# map({ "n", "x" }, "<Down>", "v:count == 0 ? 'gj' : 'j'", { desc = "Down", expr = true, silent = true })
-# map({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { desc = "Up", expr = true, silent = true })
-# map({ "n", "x" }, "<Up>", "v:count == 0 ? 'gk' : 'k'", { desc = "Up", expr = true, silent = true })
-#
-# -- Move to window using the <ctrl> hjkl keys
-# map("n", "<C-h>", "<C-w>h", { desc = "Go to Left Window", remap = true })
-# map("n", "<C-j>", "<C-w>j", { desc = "Go to Lower Window", remap = true })
-# map("n", "<C-k>", "<C-w>k", { desc = "Go to Upper Window", remap = true })
-# map("n", "<C-l>", "<C-w>l", { desc = "Go to Right Window", remap = true })
-#
-# -- Resize window using <ctrl> arrow keys
-# map("n", "<C-Up>", "<cmd>resize +2<cr>", { desc = "Increase Window Height" })
-# map("n", "<C-Down>", "<cmd>resize -2<cr>", { desc = "Decrease Window Height" })
-# map("n", "<C-Left>", "<cmd>vertical resize -2<cr>", { desc = "Decrease Window Width" })
-# map("n", "<C-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increase Window Width" })
-#
-# -- Move Lines
-# map("n", "<A-j>", "<cmd>execute 'move .+' . v:count1<cr>==", { desc = "Move Down" })
-# map("n", "<A-k>", "<cmd>execute 'move .-' . (v:count1 + 1)<cr>==", { desc = "Move Up" })
-# map("i", "<A-j>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move Down" })
-# map("i", "<A-k>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move Up" })
-# map("v", "<A-j>", ":<C-u>execute \"'<,'>move '>+\" . v:count1<cr>gv=gv", { desc = "Move Down" })
-# map("v", "<A-k>", ":<C-u>execute \"'<,'>move '<-\" . (v:count1 + 1)<cr>gv=gv", { desc = "Move Up" })
-#
-# -- buffers
-# map("n", "<S-h>", "<cmd>bprevious<cr>", { desc = "Prev Buffer" })
-# map("n", "<S-l>", "<cmd>bnext<cr>", { desc = "Next Buffer" })
-# map("n", "[b", "<cmd>bprevious<cr>", { desc = "Prev Buffer" })
-# map("n", "]b", "<cmd>bnext<cr>", { desc = "Next Buffer" })
-# map("n", "<leader>bb", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
-# map("n", "<leader>`", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
-# map("n", "<leader>bd", function()
-#   Snacks.bufdelete()
-# end, { desc = "Delete Buffer" })
-# map("n", "<leader>bo", function()
-#   Snacks.bufdelete.other()
-# end, { desc = "Delete Other Buffers" })
-# map("n", "<leader>bD", "<cmd>:bd<cr>", { desc = "Delete Buffer and Window" })
 #
 # -- Clear search and stop snippet on escape
 # map({ "i", "n", "s" }, "<esc>", function()

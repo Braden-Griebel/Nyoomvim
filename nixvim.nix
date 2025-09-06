@@ -30,6 +30,7 @@ in {
     ./config/plugins/custom/rustaceannvim.nix
     ./config/plugins/custom/tmux-navigator.nix
     ./config/plugins/custom/vim-slime.nix
+    ./config/plugins/custom/bufferline.nix
   ];
 
   /*

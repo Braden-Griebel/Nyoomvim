@@ -211,6 +211,9 @@ in {
 
     # See `:help hlsearch`
     hlsearch = true;
+
+    # Expand tabs 
+    expandtab = true;
   };
 
   # [[ Basic Keymaps ]]

@@ -69,12 +69,6 @@
       # Python
       pyright = { enable = true; };
       ruff = { enable = true; };
-      # Rust
-      rust_analyzer = {
-        enable = true;
-        installCargo = true;
-        installRustc = true;
-      };
       # Ocaml
       ocamllsp = { enable = true; };
       # R formatter 

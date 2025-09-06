@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{ pkgs, ... }: {
   # Dependencies
   #
   # https://nix-community.github.io/nixvim/NeovimOptions/index.html#extrapackages
@@ -8,6 +7,10 @@
     stylua
     # Used to format nix code
     alejandra
+    # Used to format go code 
+    gofumpt
+    # Used to format rust code 
+    rustfmt
   ];
 
   # Autoformat
@@ -21,7 +24,7 @@
           -- Disable "format_on_save lsp_fallback" for lanuages that don't
           -- have a well standardized coding style. You can add additional
           -- lanuages here or re-enable it for the disabled ones.
-          local disable_filetypes = { c = true, cpp = true }
+          local disable_filetypes = { c = true, cpp = false }
           if disable_filetypes[vim.bo[bufnr].filetype] then
             return nil
           else
@@ -35,6 +38,8 @@
       formatters_by_ft = {
         lua = [ "stylua" ];
         nix = [ "alejandra" ];
+        rust = [ "rustfmt" ];
+        go = [ "gofumpt" ];
         # Conform can also run multiple formatters sequentially
         # python = [ "isort "black" ];
         #
@@ -49,18 +54,14 @@
   };
 
   # https://nix-community.github.io/nixvim/keymaps/index.html
-  keymaps = [
-    {
-      mode = "";
-      key = "<leader>f";
-      action.__raw = ''
-        function()
-          require('conform').format { async = true, lsp_fallback = true }
-        end
-      '';
-      options = {
-        desc = "[F]ormat buffer";
-      };
-    }
-  ];
+  keymaps = [{
+    mode = "";
+    key = "<leader>f";
+    action.__raw = ''
+      function()
+        require('conform').format { async = true, lsp_fallback = true }
+      end
+    '';
+    options = { desc = "[F]ormat buffer"; };
+  }];
 }

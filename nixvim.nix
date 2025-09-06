@@ -212,8 +212,10 @@ in {
     # See `:help hlsearch`
     hlsearch = true;
 
-    # Expand tabs 
+    # Indent settings 
     expandtab = true;
+    shiftwidth = 2;
+    tabstop = 2;
   };
 
   # [[ Basic Keymaps ]]

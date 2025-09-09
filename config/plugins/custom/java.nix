@@ -1,5 +1,5 @@
 {
-  plugins.java = {
+  plugins.jdtls = {
     enable = true;
   };
 }

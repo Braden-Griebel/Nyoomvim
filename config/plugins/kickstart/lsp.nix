@@ -1,14 +1,14 @@
-{ pkgs, ... }: {
-  extraPackages = with pkgs; [ rPackages.languageserver ];
+{pkgs, ...}: {
+  extraPackages = with pkgs; [rPackages.languageserver];
   # Useful status updates for LSP.
   # https://nix-community.github.io/nixvim/plugins/fidget/index.html
-  plugins.fidget = { enable = true; };
+  plugins.fidget = {enable = true;};
 
-  # Enable lsp formatting 
-  plugins.lsp-format = { enable = true; };
+  # Enable lsp formatting
+  plugins.lsp-format = {enable = true;};
 
   # https://nix-community.github.io/nixvim/NeovimOptions/autoGroups/index.html
-  autoGroups = { "kickstart-lsp-attach" = { clear = true; }; };
+  autoGroups = {"kickstart-lsp-attach" = {clear = true;};};
 
   # A plugin that properly configures LuaLS for editing your Neovim config
   #  by lazily updating your workspace libraries.
@@ -16,10 +16,12 @@
   plugins.lazydev = {
     enable = true; # autoEnableSources not enough
     settings = {
-      library = [{
-        path = "\${3rd}/luv/library";
-        words = [ "vim%.uv" ];
-      }];
+      library = [
+        {
+          path = "\${3rd}/luv/library";
+          words = ["vim%.uv"];
+        }
+      ];
     };
   };
 
@@ -63,28 +65,28 @@
     #        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
     servers = {
       # c/cpp
-      clangd = { enable = true; };
-      # Go 
-      gopls = { enable = true; };
+      clangd = {enable = true;};
+      # Go
+      gopls = {enable = true;};
       # Python
-      pyright = { enable = true; };
-      ruff = { enable = true; };
+      pyright = {enable = true;};
+      ruff = {enable = true;};
       # Ocaml
-      ocamllsp = { enable = true; };
-      # R formatter 
-      air = { enable = true; };
-      # Typst 
-      tinymist = { enable = true; };
+      ocamllsp = {enable = true;};
+      # R formatter
+      air = {enable = true;};
+      # Typst
+      tinymist = {enable = true;};
       # ...etc. See `https://nix-community.github.io/nixvim/plugins/lsp` for a list of pre-configured LSPs
       #
       # Some languages (like typscript) have entire language plugins that can be useful:
       #    `https://nix-community.github.io/nixvim/plugins/typescript-tools/index.html?highlight=typescript-tools#pluginstypescript-toolspackage`
       #
       # But for many setups the LSP (`ts_ls`) will work just fine
-      ts_ls = { enable = true; };
+      ts_ls = {enable = true;};
 
       # Nix lsp
-      nixd = { enable = true; };
+      nixd = {enable = true;};
 
       # Lua lsp
       lua_ls = {
@@ -95,7 +97,7 @@
         # filetypes = {
         # };
         settings = {
-          completion = { callSnippet = "Replace"; };
+          completion = {callSnippet = "Replace";};
           # diagnostics = {
           #   disable = [
           #     "missing-fields"
@@ -121,7 +123,7 @@
           mode = "n";
           key = "grr";
           action.__raw = "require('telescope.builtin').lsp_references";
-          options = { desc = "LSP: [G]oto [R]eferences"; };
+          options = {desc = "LSP: [G]oto [R]eferences";};
         }
         # Jump to the implementation of the word under your cursor.
         #  Useful when your language has ways of declaring types without an actual implementation.
@@ -129,7 +131,7 @@
           mode = "n";
           key = "gri";
           action.__raw = "require('telescope.builtin').lsp_implementations";
-          options = { desc = "LSP: [G]oto [I]mplementation"; };
+          options = {desc = "LSP: [G]oto [I]mplementation";};
         }
         # Jump to the definition of the word under your cursor.
         #  This is where a variable was first declared, or where a function is defined, etc.
@@ -138,7 +140,7 @@
           mode = "n";
           key = "grd";
           action.__raw = "require('telescope.builtin').lsp_definitions";
-          options = { desc = "LSP: [G]oto [D]efinition"; };
+          options = {desc = "LSP: [G]oto [D]efinition";};
         }
         # Fuzzy find all the symbols in your current document.
         #  Symbols are things like variables, functions, types, etc.
@@ -146,16 +148,15 @@
           mode = "n";
           key = "gO";
           action.__raw = "require('telescope.builtin').lsp_document_symbols";
-          options = { desc = "LSP: Open Document Symbols"; };
+          options = {desc = "LSP: Open Document Symbols";};
         }
         # Fuzzy find all the symbols in your current workspace.
         #  Similar to document symbols, except searches over your entire project.
         {
           mode = "n";
           key = "gW";
-          action.__raw =
-            "require('telescope.builtin').lsp_dynamic_workspace_symbols";
-          options = { desc = "LSP: Open Workspace Symbols"; };
+          action.__raw = "require('telescope.builtin').lsp_dynamic_workspace_symbols";
+          options = {desc = "LSP: Open Workspace Symbols";};
         }
         # Jump to the type of the word under your cursor.
         #  Useful when you're not sure what type a variable is and you want to see
@@ -164,7 +165,7 @@
           mode = "n";
           key = "grt";
           action.__raw = "require('telescope.builtin').lsp_type_definitions";
-          options = { desc = "LSP: [G]oto [T]ype Definition"; };
+          options = {desc = "LSP: [G]oto [T]ype Definition";};
         }
       ];
 
@@ -178,7 +179,7 @@
         # Execute a code action, usually your cursor needs to be on top of an error
         # or a suggestion from your LSP for this to activate.
         "gra" = {
-          mode = [ "n" "x" ];
+          mode = ["n" "x"];
           action = "code_action";
           desc = "LSP: [G]oto Code [A]ction";
         };
@@ -268,6 +269,6 @@
     '';
   };
   extraConfigLua = ''
-    vim.lsp.enable("r_language_server")  
+    vim.lsp.enable("r_language_server")
   '';
 }

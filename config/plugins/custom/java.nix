@@ -1,0 +1,5 @@
+{
+  plugins.java = {
+    enable = true;
+  };
+}

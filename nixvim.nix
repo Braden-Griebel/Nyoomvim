@@ -31,6 +31,7 @@ in {
     ./config/plugins/custom/tmux-navigator.nix
     ./config/plugins/custom/vim-slime.nix
     ./config/plugins/custom/bufferline.nix
+    ./config/plugins/custom/java.nix
   ];
 
   /*

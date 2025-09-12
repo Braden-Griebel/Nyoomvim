@@ -19,19 +19,14 @@ in {
     ./config/plugins/kickstart/treesitter.nix
 
     ./config/plugins/kickstart/debug.nix
-    ./config/plugins/kickstart/indent-blankline.nix
+    # ./config/plugins/kickstart/indent-blankline.nix
     ./config/plugins/kickstart/lint.nix
     ./config/plugins/kickstart/autopairs.nix
     ./config/plugins/kickstart/neo-tree.nix
     #
     # NOTE: Configure your own plugins `see https://nix-community.github.io/nixvim/`
     # Add your plugins to ./config/plugins/custom and import them below
-    ./config/plugins/custom/ftplugin.nix
-    ./config/plugins/custom/rustaceannvim.nix
-    ./config/plugins/custom/tmux-navigator.nix
-    ./config/plugins/custom/vim-slime.nix
-    ./config/plugins/custom/bufferline.nix
-    ./config/plugins/custom/java.nix
+    ./config/plugins/custom
   ];
 
   /*
@@ -278,30 +273,31 @@ in {
     #  Use CTRL+<hjkl> to switch between windows
     #
     #  See `:help wincmd` for a list of all window commands
-    {
-      mode = "n";
-      key = "<C-h>";
-      action = "<C-w><C-h>";
-      options = {desc = "Move focus to the left window";};
-    }
-    {
-      mode = "n";
-      key = "<C-l>";
-      action = "<C-w><C-l>";
-      options = {desc = "Move focus to the right window";};
-    }
-    {
-      mode = "n";
-      key = "<C-j>";
-      action = "<C-w><C-j>";
-      options = {desc = "Move focus to the lower window";};
-    }
-    {
-      mode = "n";
-      key = "<C-k>";
-      action = "<C-w><C-k>";
-      options = {desc = "Move focus to the upper window";};
-    }
+    # Removed in favor of tmux navigator
+    # {
+    #   mode = "n";
+    #   key = "<C-h>";
+    #   action = "<C-w><C-h>";
+    #   options = {desc = "Move focus to the left window";};
+    # }
+    # {
+    #   mode = "n";
+    #   key = "<C-l>";
+    #   action = "<C-w><C-l>";
+    #   options = {desc = "Move focus to the right window";};
+    # }
+    # {
+    #   mode = "n";
+    #   key = "<C-j>";
+    #   action = "<C-w><C-j>";
+    #   options = {desc = "Move focus to the lower window";};
+    # }
+    # {
+    #   mode = "n";
+    #   key = "<C-k>";
+    #   action = "<C-w><C-k>";
+    #   options = {desc = "Move focus to the upper window";};
+    # }
   ];
 
   # https://nix-community.github.io/nixvim/NeovimOptions/autoGroups/index.html

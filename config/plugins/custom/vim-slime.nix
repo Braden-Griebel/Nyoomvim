@@ -13,7 +13,7 @@
   };
   keymaps = [
     {
-      mode = [ "n" ];
+      mode = ["n"];
       key = "gz";
       action = "<Plug>SlimeMotionSend";
       options = {
@@ -23,7 +23,7 @@
       };
     }
     {
-      mode = [ "n" ];
+      mode = ["n"];
       key = "gzz";
       action = "<Plug>SlimeLineSend";
       options = {
@@ -33,7 +33,7 @@
       };
     }
     {
-      mode = [ "x" ];
+      mode = ["x"];
       key = "gz";
       action = "<Plug>SlimeRegionSend";
       options = {
@@ -43,7 +43,7 @@
       };
     }
     {
-      mode = [ "n" ];
+      mode = ["n"];
       key = "gzc";
       action = "<Plug>SlimeConfig";
       options = {

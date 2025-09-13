@@ -6,7 +6,7 @@
     {
       key = "<leader>cr";
       action = lib.nixvim.mkRaw ''
-          function()
+        function()
           return ':IncRename ' .. vim.fn.expand '<cword>'
         end
       '';

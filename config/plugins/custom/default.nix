@@ -7,6 +7,7 @@
     ./inc-rename.nix
     ./java.nix
     ./lazygit.nix
+    ./lualine.nix
     ./noice.nix
     ./rustaceannvim.nix
     ./tmux-navigator.nix

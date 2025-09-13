@@ -13,5 +13,6 @@
     ./tmux-navigator.nix
     ./toggleterm.nix
     ./vim-slime.nix
+    ./yanky.nix
   ];
 }

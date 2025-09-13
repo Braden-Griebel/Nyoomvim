@@ -134,7 +134,7 @@ in {
     # Set <space> as the leader key
     # See `:help mapleader`
     mapleader = " ";
-    maplocalleader = " ";
+    maplocalleader = ",";
 
     # Set to true if you have a Nerd Font installed and selected in the terminal
     have_nerd_font = enable_nerd_fonts;

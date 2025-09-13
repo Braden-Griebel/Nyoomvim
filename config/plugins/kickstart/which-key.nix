@@ -19,6 +19,14 @@
           group = "[T]oggle";
         }
         {
+          __unkeyed-1 = "<leader>c";
+          group = "[C]ode";
+        }
+        {
+          __unkeyed-1 = "<leader>d";
+          group = "[D]ebug";
+        }
+        {
           __unkeyed-1 = "<leader>g";
           group = "[G]it";
           mode = ["n"];
@@ -32,6 +40,10 @@
             "o"
             "x"
           ];
+        }
+        {
+          __unkeyed-1 = "gs";
+          group = "[S]urround";
         }
       ];
     };

@@ -22,6 +22,15 @@
       #  - sd'   - [S]urround [D]elete [']quotes
       #  - sr)'  - [S]urround [R]eplace [)] [']
       surround = {
+        mappings = {
+          add = "gsa";
+          delete = "gsd";
+          find = "gsf";
+          find_left = "gsF";
+          highlight = "gsh";
+          replace = "gsr";
+          update_n_lines = "gsn";
+        };
       };
 
       # Simple and easy statusline.
@@ -33,6 +42,14 @@
 
       # ... and there is more!
       # Check out: https://github.com/echasnovski/mini.nvim
+
+      animate = {
+        cursor.enable = true;
+        scroll.enable = true;
+        resize.enable = true;
+        open.enable = true;
+        close.enable = true;
+      };
     };
   };
 

@@ -66,45 +66,37 @@
     servers = {
       # c/cpp
       clangd = {enable = true;};
+      # Fortran
+      fortls = {enable = true;};
       # Go
       gopls = {enable = true;};
+      # Java
+      jdtls = {enable = true;};
+      # Lua
+      lua_ls = {
+        enable = true;
+
+        settings = {
+          completion = {callSnippet = "Replace";};
+        };
+      };
+      # Javascript/Typescript
+      ts_ls = {enable = true;};
+      # Nix lsp
+      nixd = {enable = true;};
+      # Ocaml
+      ocamllsp = {enable = true;};
       # Python
       pyright = {enable = true;};
       ruff = {enable = true;};
-      # Ocaml
-      ocamllsp = {enable = true;};
       # R formatter
       air = {enable = true;};
       # Typst
       tinymist = {enable = true;};
-      # ...etc. See `https://nix-community.github.io/nixvim/plugins/lsp` for a list of pre-configured LSPs
-      #
-      # Some languages (like typscript) have entire language plugins that can be useful:
-      #    `https://nix-community.github.io/nixvim/plugins/typescript-tools/index.html?highlight=typescript-tools#pluginstypescript-toolspackage`
-      #
-      # But for many setups the LSP (`ts_ls`) will work just fine
-      ts_ls = {enable = true;};
-
-      # Nix lsp
-      nixd = {enable = true;};
-
-      # Lua lsp
-      lua_ls = {
-        enable = true;
-
-        # cmd = {
-        # };
-        # filetypes = {
-        # };
-        settings = {
-          completion = {callSnippet = "Replace";};
-          # diagnostics = {
-          #   disable = [
-          #     "missing-fields"
-          #   ];
-          # };
-        };
-      };
+      # Configuration Files
+      lemminx = {enable = true;};
+      yamlls = {enable = true;};
+      jsonls = {enable = true;};
     };
 
     keymaps = {
@@ -268,6 +260,7 @@
       end
     '';
   };
+  # Setup the R language server
   extraConfigLua = ''
     vim.lsp.enable("r_language_server")
   '';

@@ -4,6 +4,7 @@
     ./dashboard.nix
     ./flash.nix
     ./ftplugin.nix
+    ./fortune.nix
     ./inc-rename.nix
     ./java.nix
     ./lazygit.nix

@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   # Dependencies
   #
   # https://nix-community.github.io/nixvim/NeovimOptions/index.html#extrapackages
@@ -7,10 +7,12 @@
     stylua
     # Used to format nix code
     alejandra
-    # Used to format go code 
+    # Used to format go code
     gofumpt
-    # Used to format rust code 
+    # Used to format rust code
     rustfmt
+    # Used to format shell/bash code
+    shfmt
   ];
 
   # Autoformat
@@ -36,10 +38,11 @@
         end
       '';
       formatters_by_ft = {
-        lua = [ "stylua" ];
-        nix = [ "alejandra" ];
-        rust = [ "rustfmt" ];
-        go = [ "gofumpt" ];
+        lua = ["stylua"];
+        nix = ["alejandra"];
+        rust = ["rustfmt"];
+        go = ["gofumpt"];
+        bash = ["shfmt"];
         # Conform can also run multiple formatters sequentially
         # python = [ "isort "black" ];
         #
@@ -54,14 +57,16 @@
   };
 
   # https://nix-community.github.io/nixvim/keymaps/index.html
-  keymaps = [{
-    mode = "";
-    key = "<leader>f";
-    action.__raw = ''
-      function()
-        require('conform').format { async = true, lsp_fallback = true }
-      end
-    '';
-    options = { desc = "[F]ormat buffer"; };
-  }];
+  keymaps = [
+    {
+      mode = "";
+      key = "<leader>f";
+      action.__raw = ''
+        function()
+          require('conform').format { async = true, lsp_fallback = true }
+        end
+      '';
+      options = {desc = "[F]ormat buffer";};
+    }
+  ];
 }

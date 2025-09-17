@@ -1,6 +1,12 @@
-{
+{pkgs, ...}: {
   # Linting
   # https://nix-community.github.io/nixvim/plugins/lint/index.html
+  extraPackages = with pkgs; [
+    markdownlint-cli2
+    shellcheck
+    vale
+  ];
+
   plugins.lint = {
     enable = true;
 
@@ -9,8 +15,9 @@
       nix = ["nix"];
       markdown = [
         "markdownlint"
-        # "vale"
+        "vale"
       ];
+      bash = ["shellcheck"];
       #clojure = ["clj-kondo"];
       #dockerfile = ["hadolint"];
       #inko = ["inko"];
@@ -19,7 +26,7 @@
       #rst = ["vale"];
       #ruby = ["ruby"];
       #terraform = ["tflint"];
-      #text = ["vale"];
+      text = ["vale"];
     };
 
     # Create autocommand which carries out the actual linting

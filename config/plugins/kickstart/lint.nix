@@ -2,7 +2,9 @@
   # Linting
   # https://nix-community.github.io/nixvim/plugins/lint/index.html
   extraPackages = with pkgs; [
+    cpplint
     markdownlint-cli2
+    mypy
     shellcheck
     vale
   ];
@@ -18,6 +20,8 @@
         "vale"
       ];
       bash = ["shellcheck"];
+      cpp = ["cppling"];
+      python = ["dmypy"];
       #clojure = ["clj-kondo"];
       #dockerfile = ["hadolint"];
       #inko = ["inko"];

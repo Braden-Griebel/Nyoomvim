@@ -87,7 +87,8 @@
       # Ocaml
       ocamllsp = {enable = true;};
       # Python
-      pyright = {enable = true;};
+      # pyright = {enable = true;};
+      pylsp = {enable = true;};
       ruff = {enable = true;};
       # R formatter
       air = {enable = true;};

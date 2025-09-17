@@ -1,5 +1,6 @@
 {
   imports = [
+    ./aerial.nix
     ./bufferline.nix
     ./dashboard.nix
     ./flash.nix

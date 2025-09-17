@@ -64,14 +64,34 @@
     #  - settings: Override the default settings passed when initializing the server.
     #        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
     servers = {
+      # Bash
+      bashls = {enable = true;};
       # c/cpp
       clangd = {enable = true;};
+      neocmake = {enable = true;};
+      # CSS
+      cssls = {enable = true;};
       # Fortran
       fortls = {enable = true;};
+      # Gleam
+      gleam = {enable = true;};
       # Go
       gopls = {enable = true;};
+      # Haskell
+      hls = {
+        enable = true;
+        installGhc = true;
+      };
+      # HTML
+      html = {enable = true;};
       # Java
       jdtls = {enable = true;};
+      # Javascript/Typescript
+      # ts_ls = {enable = true;};
+      denols = {enable = true;};
+      oxlint = {enable = true;};
+      # Markdown
+      marksman = {enable = true;};
       # Lua
       lua_ls = {
         enable = true;
@@ -80,8 +100,6 @@
           completion = {callSnippet = "Replace";};
         };
       };
-      # Javascript/Typescript
-      ts_ls = {enable = true;};
       # Nix lsp
       nixd = {enable = true;};
       # Ocaml

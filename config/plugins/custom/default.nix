@@ -13,6 +13,7 @@
     ./rustaceannvim.nix
     ./tmux-navigator.nix
     ./toggleterm.nix
+    ./typst.nix
     ./vim-slime.nix
     ./yanky.nix
   ];

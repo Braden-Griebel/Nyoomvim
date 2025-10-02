@@ -6,7 +6,6 @@
     markdownlint-cli2
     mypy
     shellcheck
-    vale
   ];
 
   plugins.lint = {
@@ -17,7 +16,6 @@
       nix = ["nix"];
       markdown = [
         "markdownlint"
-        "vale"
       ];
       bash = ["shellcheck"];
       cpp = ["cppling"];
@@ -42,7 +40,7 @@
           -- avoid superfluous noise, notably within the handy LSP pop-ups that
           -- describe the hovered symbol using Markdown.
           if vim.opt_local.modifiable:get() then
-            require('lint').try_lint()
+            require('lint').try_lint(nil, { ignore_errors = true })
           end
         end
       '';

@@ -8,6 +8,7 @@
     ./fortune.nix
     ./inc-rename.nix
     ./lazygit.nix
+    ./lean.nix
     ./lualine.nix
     ./noice.nix
     ./rustaceannvim.nix

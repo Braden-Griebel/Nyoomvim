@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   # Highlight, edit, and navigate code
   # https://nix-community.github.io/nixvim/plugins/treesitter/index.html
   plugins.treesitter = {
@@ -43,10 +43,10 @@
       rust
       toml # Also for ZMK `keymap.toml`
 
-      # R 
+      # R
       r
 
-      # Python 
+      # Python
       python
 
       # c/cpp
@@ -85,18 +85,18 @@
       # Installing tree-sitter grammars from nvim-treesitter
       # (can be combined with grammarPackages from Nixpkgs)
       # https://nix-community.github.io/nixvim/plugins/treesitter/index.html#installing-tree-sitter-grammars-from-nvim-treesitter
-      ensureInstalled = [ ];
+      ensureInstalled = [];
 
       highlight = {
         enable = true;
 
         # Some languages depend on vim's regex highlighting system for indent rules.
-        additional_vim_regex_highlighting = [ "ruby" ];
+        additional_vim_regex_highlighting = ["ruby" "typst"];
       };
 
       indent = {
         enable = true;
-        disable = [ "ruby" ];
+        disable = ["ruby" "typst"];
       };
 
       # There are additional nvim-treesitter modules that you can use to interact
